@@ -5,6 +5,8 @@ module.exports = {
        url : 'mongodb+srv://nembv:nembv@cluster0-dwwl8.gcp.mongodb.net/nembv' // 3.6이상
     },
     web: {
+      host: 'localhost:3000',
+      secret_key: 'yullinNembv',
       cors: true
     }
   };
