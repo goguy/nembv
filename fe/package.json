@@ -14,11 +14,18 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1",
+    "axios": "^0.18.0",
     "bootstrap": "^4.0.0-beta.2",
     "bootstrap-vue": "latest",
-    "popper.js": "^1.12.9"
+    "fontawesome-markers": "^4.6.1",
+    "moment": "^2.22.2",
+    "popper.js": "^1.12.9",
+    "sweetalert": "^2.1.0",
+    "vue": "^2.5.2",
+    "vue-awesome": "^3.1.3",
+    "vue-cookie": "^1.1.4",
+    "vue-router": "^3.0.1",
+    "vue2-google-maps": "^0.10.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

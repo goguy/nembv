@@ -8,6 +8,7 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 const history = require('connect-history-api-fallback')
 const cfg = require('./cfg/cfg');
+const pg = require('./playGround');
 
 if (!cfg) {
   console.error('./cfg/cfg.js file not exists');
@@ -16,12 +17,12 @@ if (!cfg) {
 
 var app = express();
 
+if(cfg.web.cors) app.use(require('cors')());
+
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'fe', 'dist')));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -50,6 +51,7 @@ app.use(function(err, req, res, next) {
 mongoose.connect(cfg.db.url, { useNewUrlParser: true }, (err) => {
   if (err) return console.error(err);
   console.log('mongoose connected');
+  pg.test.model();
 });
 
 module.exports = app;
