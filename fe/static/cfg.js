@@ -1,6 +1,6 @@
 module.exports = {
   path: {
     // api : '/api/',
-    api: 'http://localhost:3000/api/'
+    api: 'http://localhost:3001/api/'
   }
 }
