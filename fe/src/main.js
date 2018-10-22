@@ -22,8 +22,8 @@ import cfg from '../static/cfg'
 
 moment.locale('ko')
 
-if (process.env.NODE_ENV === 'development') cfg.path.api = 'http://localhost:3000/api/'
-
+if (process.env.NODE_ENV === 'development') cfg.path.api = 'http://localhost:3001/api/'
+// if (process.env.NODE_ENV === 'development') cfg.path.api = 'http://104.196.6.123:3001/api/'
 // axios.defaults.baseURL = cfg.path.api;
 // console.log(VueCookie.get('token'));
 const token = VueCookie.get('token')
@@ -33,7 +33,7 @@ if (token) axios.defaults.headers.common.Authorization = VueCookie.get('token')
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 axios.interceptors.response.use((res) => {
   if (res.data.token) {
-    VueCookie.set('token', res.data.token, { expires: '2m' })
+    VueCookie.set('token', res.data.token, { expires: cfg.cookie.expiresIn })
     axios.defaults.headers.common.Authorization = VueCookie.get('token')
   }
   // console.log(res);
@@ -52,6 +52,7 @@ Vue.prototype.$cfg = cfg
 Vue.prototype.$moment = moment
 Vue.prototype.$swal = swal
 Vue.prototype.$fam = fam
+Vue.prototype.$cookie = VueCookie
 
 Vue.component('icon', Icon)
 

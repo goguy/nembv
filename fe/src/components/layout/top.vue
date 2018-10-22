@@ -58,7 +58,7 @@
               <em>User</em>
             </template>
             <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Signout</b-dropdown-item>
+            <b-dropdown-item @click="signout">Signout</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
 
@@ -74,7 +74,32 @@
 
   export default {
     name: 'top',
-    components: { topItem }
+    components: { topItem },
+    methods: {
+      swalSuccess (msg) {
+        return this.$swal({
+          icon: 'success',
+          title: '성공',
+          text: msg,
+          timer: 2000
+        })
+      },
+      signout () {
+        this.$cookie.delete('token')
+        // this.swalSuccess('로그아웃 되었습니다')
+        return this.swalSuccess('로그아웃 되었습니다')
+          .then(() => {
+            location.href = '/#/sign'
+            // setTimeout(() => { location.href = '/#/sign' })
+            // setTimeout(() => {
+            //   location.href = '/#/sign'
+            // }, 1000)
+          })
+          // .cache((err) => {
+          //   this.swalError(err.message)
+          // })
+      }
+    }
   }
 </script>
 
